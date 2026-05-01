@@ -86,7 +86,7 @@ New thread created
 Types of Functional Interfaces in Java
 Java 8 introduced four main functional interface types under the package java.util.function. These are widely used in Stream API, collections and lambda-based operations.
 
-functional_interfaces
+
 Functional Interfaces
 1. Consumer 
 Consumer interface of the functional interface is the one that accepts only one argument. It is used for performing an action, such as printing or logging. There are also functional variants of the Consumer DoubleConsumer, IntConsumer and LongConsumer.
@@ -154,7 +154,6 @@ class Geeks {
 
 Output
 Geek
-GeeksQuiz
-Geek2
+
 
 
