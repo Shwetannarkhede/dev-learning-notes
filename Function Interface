@@ -154,6 +154,102 @@ class Geeks {
 
 Output
 Geek
+---------------------------------
+
+## Before Java 8 — The Old Way
+
+Before Java 8, to pass behavior (logic) to a method, you had to use **Anonymous Inner Classes**. It was verbose and clunky.
+
+**Example: Sorting a list before Java 8**
+```java
+List<String> names = Arrays.asList("Charlie", "Alice", "Bob");
+
+Collections.sort(names, new Comparator<String>() {
+    @Override
+    public int compare(String a, String b) {
+        return a.compareTo(b);
+    }
+});
+```
+
+
+## After Java 8 — With Lambda + Functional Interface
+
+```java
+List<String> names = Arrays.asList("Charlie", "Alice", "Bob");
+
+Collections.sort(names, (a, b) -> a.compareTo(b));
+```
+
+Same result. **One line.** Clean and readable.
+
+This works because `Comparator` is a functional interface — so Java lets you replace the whole anonymous class with a lambda.
+
+---
+
+## Why Do We Use Functional Interfaces?
+
+### 1. 🧹 Removes Boilerplate
+Anonymous inner classes were repetitive and hard to read. Lambdas (powered by functional interfaces) make code **shorter and cleaner**.
+
+### 2. 📦 Pass Behavior as a Value
+You can now **store logic in a variable** and pass it around like data.
+
+```java
+Predicate<Integer> isAdult = age -> age >= 18;
+
+if (isAdult.test(20)) {
+    System.out.println("Can vote!");
+}
+```
+
+Before Java 8, you couldn't do this cleanly.
+
+### 3. 🔁 Enables the Streams API
+The entire `Stream` API is built on functional interfaces. Without them, there'd be no `filter`, `map`, `reduce`.
+
+```java
+list.stream()
+    .filter(s -> s.startsWith("A"))   // Predicate
+    .map(String::toUpperCase)         // Function
+    .forEach(System.out::println);    // Consumer
+```
+
+### 4. 🔀 Enables Method References
+```java
+// Instead of:
+list.forEach(name -> System.out.println(name));
+
+// You can write:
+list.forEach(System.out::println);
+```
+
+### 5. ✅ Encourages Functional Programming Style
+You write **what to do**, not **how to do it** — making code more declarative and easier to reason about.
+
+---
+
+## Side-by-Side Comparison
+
+| Feature | Before Java 8 | After Java 8 |
+|---|---|---|
+| Pass logic | Anonymous inner class | Lambda expression |
+| Code length | Long, verbose | Short, clean |
+| Readability | Hard to read | Easy to read |
+| Reusability | Low | High (store in variables) |
+| Stream support | ❌ No | ✅ Yes |
+| Method references | ❌ No | ✅ Yes |
+
+---
+
+## Real-World Analogy
+
+Think of it like giving **instructions to a robot**:
+
+- **Before Java 8:** You write a whole manual, hire someone to hold the manual, and the robot reads it.
+- **After Java 8:** You just **tell** the robot directly — *"turn left"* — and it does it.
+
+-
 
 
 
