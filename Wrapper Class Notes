@@ -1,0 +1,248 @@
+
+1.  What are Wrapper Classes?
+
+Wrapper Classes are classes that convert primitive data types into objects.
+
+Java Collections Framework works only with objects, so wrapper classes are used when object representation is required.
+
+| Primitive Type | Wrapper Class |
+| -------------- | ------------- |
+| byte           | Byte          |
+| short          | Short         |
+| int            | Integer       |
+| long           | Long          |
+| float          | Float         |
+| double         | Double        |
+| char           | Character     |
+| boolean        | Boolean       |
+
+---
+
+2. Why do we need Wrapper Classes?
+
+  1. Collections require Objects
+
+❌ Not Allowed
+
+ArrayList<int> list = new ArrayList<>();
+
+
+✅ Allowed
+
+ArrayList<Integer> list = new ArrayList<>();
+
+
+---
+
+2. Utility Methods
+
+Wrapper classes provide useful methods.
+
+int num = Integer.parseInt("100");
+
+System.out.println(num);
+```
+
+Output:
+100
+
+
+---
+
+## Autoboxing
+
+Automatic conversion of primitive type to wrapper object.
+
+ Example
+int num = 10;
+
+Integer obj = num;
+
+Java automatically converts int → Integer.
+
+---
+
+## Unboxing
+
+Automatic conversion of wrapper object to primitive type.
+
+ Example
+
+Integer obj = 20;
+
+int num = obj;
+
+
+Java automatically converts Integer → int.
+
+---
+
+## Example of Autoboxing and Unboxing
+
+```java
+Integer a = 100; // Autoboxing
+
+int b = a;       // Unboxing
+
+System.out.println(b);
+```
+
+Output:
+
+```java
+100
+```
+
+---
+
+## Common Methods of Wrapper Classes
+
+### Integer.parseInt()
+
+Converts String to int.
+
+```java
+int num = Integer.parseInt("123");
+```
+
+---
+
+### Integer.valueOf()
+
+Returns Integer object.
+
+```java
+Integer num = Integer.valueOf("123");
+```
+
+---
+
+### toString()
+
+Converts number to String.
+
+```java
+Integer num = 100;
+
+String str = num.toString();
+```
+
+---
+
+## Integer Caching (Important Interview Question)
+
+Java caches Integer objects from **-128 to 127**.
+
+### Example
+
+```java
+Integer a = 100;
+Integer b = 100;
+
+System.out.println(a == b);
+```
+
+Output:
+
+```java
+true
+```
+
+Because both objects use the cached value.
+
+---
+
+### Example
+
+```java
+Integer a = 200;
+Integer b = 200;
+
+System.out.println(a == b);
+```
+
+Output:
+
+```java
+false
+```
+
+Because new objects are created.
+
+---
+
+## Wrapper Class Hierarchy
+
+```text
+Object
+   |
+ Number
+   |
+ ----------------------
+ |    |    |    |     |
+Byte Short Integer Long Double
+```
+
+Character and Boolean directly extend Object.
+
+---
+
+## Interview Questions
+
+### Q1. What is a Wrapper Class?
+
+A Wrapper Class converts primitive data types into objects.
+
+---
+
+### Q2. Why are Wrapper Classes used?
+
+* Collections require objects.
+* Utility methods are available.
+* Supports Generics.
+
+---
+
+### Q3. What is Autoboxing?
+
+Automatic conversion of primitive type into wrapper object.
+
+Example:
+
+```java
+Integer num = 10;
+```
+
+---
+
+### Q4. What is Unboxing?
+
+Automatic conversion of wrapper object into primitive type.
+
+Example:
+
+```java
+Integer num = 10;
+int n = num;
+```
+
+---
+
+### Q5. Difference between parseInt() and valueOf()
+
+| parseInt()            | valueOf()              |
+| --------------------- | ---------------------- |
+| Returns primitive int | Returns Integer object |
+| Faster                | Creates object         |
+
+Example:
+
+```java
+int a = Integer.parseInt("10");
+
+Integer b = Integer.valueOf("10");
+```
+
+
+
+**"Wrapper classes are object representations of primitive data types. They are used because collections and generics work with objects, not primitives. Java provides wrapper classes like Integer, Double, Character, and Boolean. Wrapper classes support autoboxing and unboxing, which automatically convert primitives to objects and vice versa."**
